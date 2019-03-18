@@ -1,3 +1,4 @@
+<?php include 'database.php' ?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -51,21 +52,6 @@
     </div>
 
     <?php
-    $servername = "localhost";
-    $username = "replica";
-    $password = "pass";
-    $dbname = "videojuegos";
-
-    // Create connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
-    $conn->set_charset("utf8mb4");
-
-    if (!$conn->set_charset("utf8mb4")) {
-      printf("Error loading character set utf8: %s\n", $conn->error);
-    } else {
-      printf("Current character set: %s\n", $conn->character_set_name());
-    }
-
     if(!empty($_POST['game']) && !empty($_POST['idioma']) && !empty($_POST['plat']) && !empty($_POST['cat'])
     && !empty($_POST['tipo']) && !empty($_POST['desa']) && !empty($_POST['clas'])
     && !empty($_POST['num_jug']) && !empty($_POST['tamaño']) && !empty($_POST['desc'])

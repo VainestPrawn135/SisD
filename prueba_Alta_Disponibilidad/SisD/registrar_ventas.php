@@ -1,3 +1,4 @@
+<?php include 'database.php' ?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -30,20 +31,6 @@
     </div>
 
     <?php
-    $servername = "localhost";
-    $username = "replica";
-    $password = "pass";
-    $dbname = "videojuegos";
-
-    // Create connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
-    $conn->set_charset("utf8mb4");
-
-    if (!$conn->set_charset("utf8mb4")) {
-      printf("Error loading character set utf8: %s\n", $conn->error);
-    } else {
-      printf("Current character set: %s\n", $conn->character_set_name());
-    }
     $cont=$conn->query("SELECT * FROM VENTA");
     $numrows = $cont->num_rows;
 
@@ -97,7 +84,7 @@
         }
 
         $fecha_actual = date("Y-m-d");
-        $insertar = "INSERT INTO VENTA VALUES('NULL', '$_client_id', '$_game_id', '$_vendor_id', '$fecha_actual')";
+        $insertar = "INSERT INTO VENTA VALUES('$id', '$_client_id', '$_game_id', '$_vendor_id', '$fecha_actual')";
 
         if($conn->query($insertar) == TRUE){
           $message = "Transacción exitosa!";

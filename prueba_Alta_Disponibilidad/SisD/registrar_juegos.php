@@ -1,3 +1,4 @@
+<?php include 'database.php' ?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -50,20 +51,6 @@
     </div>
 
     <?php
-    $servername = "localhost";
-    $username = "replica";
-    $password = "pass";
-    $dbname = "videojuegos";
-
-    // Create connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
-    $conn->set_charset("utf8mb4");
-
-    if (!$conn->set_charset("utf8mb4")) {
-      printf("Error loading character set utf8: %s\n", $conn->error);
-    } else {
-      printf("Current character set: %s\n", $conn->character_set_name());
-    }
     $cont=$conn->query("SELECT * FROM CATALOGO_JUEGOS");
     $numrows = $cont->num_rows;
 
@@ -86,6 +73,7 @@
       $_precio=$_POST['precio'];
 
       if($numrows!=0){
+        $id = $numrows + 1;
         $comprobar_idioma = "SELECT * FROM IDIOMA WHERE LENGUAJE = '$_idioma'";
         $comprobar_plataforma = "SELECT * FROM PLATAFORMA WHERE NOMBRE_PLAT = '$_plat'";
         $comprobar_categoria = "SELECT * FROM CATEGORIA WHERE NOMBRE_CAT = '$_cat'";
@@ -166,7 +154,7 @@
         }
 
         $insertar = "INSERT INTO
-        CATALOGO_JUEGOS VALUES('NULL', '$_game', '$_idioma_id', '$_plat_id', '$_cat_id', '$_tipo_id', '$_desa_id',
+        CATALOGO_JUEGOS VALUES('$id', '$_game', '$_idioma_id', '$_plat_id', '$_cat_id', '$_tipo_id', '$_desa_id',
         '$_clas_id', '$_num_jug', '$_tamaño', '$_desc', '$_fecha_lan', '$_stock', '$_precio')";
 
         $comprueba = "SELECT * FROM CATALOGO_JUEGOS, IDIOMA, PLATAFORMA,

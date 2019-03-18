@@ -1,3 +1,4 @@
+<?php include 'database.php' ?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -15,24 +16,6 @@
 	<th>Fecha</th></tr>
 
     <?php
-    $servername = "localhost";
-    $username = "replica";
-    $password = "pass";
-    $dbname = "videojuegos";
-    // Create connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
-    $conn->set_charset("utf8mb4");
-
-    if (!$conn->set_charset("utf8mb4")) {
-      printf("Error loading character set utf8: %s\n", $conn->error);
-    } else {
-      printf("Current character set: %s\n", $conn->character_set_name());
-    }
-    // Check connection
-    if ($conn->connect_error) {
-        die("¡Conexión Fallida!: " . $conn->connect_error);
-    }
-
     $sql = "SELECT VENTA_ID, CLIENTE_USUARIO, NOMBRE_JUEGO, VENDEDOR_USUARIO, FECHA
             FROM VENTA, CLIENTE, CATALOGO_JUEGOS, VENDEDOR
             WHERE VENTA_ID_CLIENTE = CLIENTE.CLIENTE_ID

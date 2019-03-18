@@ -38,12 +38,12 @@
       echo "Conectando a: ".gethostname();
       echo "<br><br>";
       echo "Dirección IP: ".get_real_ip();
-      header("Refresh: 1; url=index.html");
+      header("Refresh: 1; url=inicio.html");
     }
 
     else {
       echo "IP no encontrada";
-      ?><p><a href="index.html"><input type="button" name="Refresh" value="Volver a cargar"></a></p><?php
+      ?><p><a href="index.php"><input type="button" name="Refresh" value="Volver a cargar"></a></p><?php
     }
      ?>
   </body>

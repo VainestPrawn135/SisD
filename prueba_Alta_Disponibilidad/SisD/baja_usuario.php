@@ -1,3 +1,4 @@
+<?php include 'database.php' ?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -28,7 +29,7 @@
           </p>
         </form>
         <p class="submit">
-          <a href="index.html">
+          <a href="index.php">
             <input type="submit" name="index" id="index" class="button" value=" Regresar a Inicio">
           </a>
         </p>
@@ -36,21 +37,6 @@
     </div>
 
     <?php
-    $servername = "localhost";
-    $username = "replica";
-    $password = "pass";
-    $dbname = "videojuegos";
-
-    // Create connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
-    $conn->set_charset("utf8mb4");
-
-    if (!$conn->set_charset("utf8mb4")) {
-      printf("Error loading character set utf8: %s\n", $conn->error);
-    } else {
-      printf("Current character set: %s\n", $conn->character_set_name());
-    }
-
     if(!empty($_POST['name']) && !empty($_POST['ap_pat']) && !empty($_POST['ap_mat']) && !empty($_POST['password']) && !empty($_POST['username']) && !empty($_POST['email'])) {
       $_name=$_POST['name'];
       $_app=$_POST['ap_pat'];

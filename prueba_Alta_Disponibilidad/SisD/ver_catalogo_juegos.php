@@ -1,3 +1,4 @@
+<?php include 'database.php' ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -24,25 +25,6 @@
       <th>Precio</th></tr>
 
     <?php
-    $servername = "localhost";
-    $username = "replica";
-    $password = "pass";
-    $dbname = "videojuegos";
-
-    // Create connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
-    $conn->set_charset("utf8mb4");
-
-    if (!$conn->set_charset("utf8mb4")) {
-      printf("Error loading character set utf8: %s\n", $conn->error);
-    } else {
-      printf("Current character set: %s\n", $conn->character_set_name());
-    }
-    // Check connection
-    if ($conn->connect_error) {
-        die("¡Conexión Fallida!: " . $conn->connect_error);
-    }
-
     $sql = "SELECT * FROM CATALOGO_JUEGOS, IDIOMA, PLATAFORMA,
     CATEGORIA, TIPO, DESARROLLADORA, CLASIFICACION WHERE
     CATALOGO_JUEGOS.JUEGO_ID_IDIOMA = IDIOMA.IDIOMA_ID AND

@@ -1,3 +1,4 @@
+<?php include 'database.php' ?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -37,20 +38,6 @@
     </div>
 
     <?php
-    $servername = "localhost";
-    $username = "replica";
-    $password = "pass";
-    $dbname = "videojuegos";
-
-    // Create connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
-    $conn->set_charset("utf8mb4");
-
-    if (!$conn->set_charset("utf8mb4")) {
-      printf("Error loading character set utf8: %s\n", $conn->error);
-    } else {
-      printf("Current character set: %s\n", $conn->character_set_name());
-    }
     $cont=$conn->query("SELECT * FROM CLIENTE");
     $numrows = $cont->num_rows;
 
@@ -64,7 +51,7 @@
 
       if($numrows!=0){
         $id = $numrows + 1;
-        $insertar = "INSERT INTO CLIENTE VALUES('NULL', '$_name', '$_app', '$_apm', '$_username', '$_password', '$_email')";
+        $insertar = "INSERT INTO CLIENTE VALUES('$id', '$_name', '$_app', '$_apm', '$_username', '$_password', '$_email')";
         $comprueba = "SELECT * FROM CLIENTE WHERE NOMBRE='$_name' AND APP='$_app' AND APM='$_apm'
                       AND CLIENTE_USUARIO='$_username' AND CONTRASEÑA='$_password' AND CORREO='$_email'";
 
